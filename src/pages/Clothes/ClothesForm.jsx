@@ -61,67 +61,78 @@ const ClothesForm = () => {
   };
 
   return (
-    <Box
-      component="form"
-      onSubmit={handleSubmit(onSubmit)}
-      sx={{ maxWidth: 600 }}
-    >
-      <TextField
-        label="Clothes Code"
-        {...register("clothesCode")}
-        fullWidth
-        margin="normal"
-        slotProps={{ inputLabel: { shrink: true } }} // ✅ Cách mới
-      />
-      <TextField
-        label="Clothes Name"
-        {...register("clothesName")}
-        fullWidth
-        margin="normal"
-        slotProps={{ inputLabel: { shrink: true } }} // ✅ Cách mới
-      />
-      <TextField
-        label="Description"
-        {...register("description")}
-        fullWidth
-        margin="normal"
-        multiline
-        slotProps={{ inputLabel: { shrink: true } }} // ✅ Cách mới   
-      />
-
-      <FormControl fullWidth margin="normal">
-        <InputLabel>Loại quần áo</InputLabel>
-        <Controller
-          name="typeDetails"
-          control={control}
-          render={({ field }) => (
-            <Select
-              multiple
-              value={field.value}
-              onChange={(e) => field.onChange(e.target.value)}
-              renderValue={(selected) => (
-                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-                  {selected.map((id) => {
-                    const found = types.find((type) => type.id === id);
-                    return <Chip key={id} label={found?.name || id} />;
-                  })}
-                </Box>
-              )}
-            >
-              {types.map((type) => (
-                <MenuItem key={type.id} value={type.id}>
-                  {type.name}
-                </MenuItem>
-              ))}
-            </Select>
-          )}
+    <>
+      <h1>{id ? "Cập nhật Quần áo" : "Tạo mới Quần áo"}</h1>
+      <Box
+        component="form"
+        onSubmit={handleSubmit(onSubmit)}
+        sx={{ maxWidth: 600 }}
+      >
+        <TextField
+          label="Clothes Code"
+          {...register("clothesCode")}
+          fullWidth
+          margin="normal"
+          slotProps={{ inputLabel: { shrink: true } }} // ✅ Cách mới
         />
-      </FormControl>
+        <TextField
+          label="Clothes Name"
+          {...register("clothesName")}
+          fullWidth
+          margin="normal"
+          slotProps={{ inputLabel: { shrink: true } }} // ✅ Cách mới
+        />
+        <TextField
+          label="Description"
+          {...register("description")}
+          fullWidth
+          margin="normal"
+          multiline
+          slotProps={{ inputLabel: { shrink: true } }} // ✅ Cách mới
+        />
 
-      <Button type="submit" variant="contained">
-        {id ? "Cập nhật" : "Tạo mới"}
-      </Button>
-    </Box>
+        <FormControl fullWidth margin="normal">
+          <InputLabel>Loại quần áo</InputLabel>
+          <Controller
+            name="typeDetails"
+            control={control}
+            render={({ field }) => (
+              <Select
+                multiple
+                value={field.value}
+                onChange={(e) => field.onChange(e.target.value)}
+                renderValue={(selected) => (
+                  <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+                    {selected.map((id) => {
+                      const found = types.find((type) => type.id === id);
+                      return <Chip key={id} label={found?.name || id} />;
+                    })}
+                  </Box>
+                )}
+              >
+                {types.map((type) => (
+                  <MenuItem key={type.id} value={type.id}>
+                    {type.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            )}
+          />
+        </FormControl>
+        <Button
+          type="button"
+          variant="outlined"
+          onClick={() => navigate("/clothes")}
+          sx={{ mr: 1 }}
+        >
+          Quay lại
+        </Button>
+
+        <Button type="submit" variant="contained">
+          {id ? "Cập nhật" : "Tạo mới"}
+        </Button>
+      </Box>
+    </>
   );
 };
 

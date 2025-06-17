@@ -60,60 +60,69 @@ const TypeForm = () => {
   };
 
   return (
-    <Box
-      component="form"
-      onSubmit={handleSubmit(onSubmit)}
-      sx={{ maxWidth: 600 }}
-    >
-      <TextField
-        label="Code"
-        {...register("code")}
-        fullWidth
-        margin="normal"
-        slotProps={{ inputLabel: { shrink: true } }}
-      />
-      <TextField
-        label="Name"
-        {...register("name")}
-        fullWidth
-        margin="normal"
-        slotProps={{ inputLabel: { shrink: true } }}
-      />
-      <TextField
-        label="Description"
-        {...register("description")}
-        fullWidth
-        margin="normal"
-        multiline
-        slotProps={{ inputLabel: { shrink: true } }}
-      />
-      <FormControl fullWidth margin="normal">
-        <InputLabel id="type-label">Thể loại</InputLabel>
-        <Controller
-          name="type_id"
-          control={control}
-          defaultValue=""
-          render={({ field }) => (
-            <Select
-              labelId="type-label"
-              label="Thể loại"
-              {...field}
-              slotProps={{ inputLabel: { shrink: true } }}
-            >
-              {categories.map((cat) => (
-                <MenuItem key={cat.id} value={cat.id}>
-                  {cat.name}
-                </MenuItem>
-              ))}
-            </Select>
-          )}
+    <>
+      <h1>{id ? "Cập nhật loại quần áo" : "Thêm loại quần áo"}</h1>
+      <Box
+        component="form"
+        onSubmit={handleSubmit(onSubmit)}
+        sx={{ maxWidth: 600 }}
+      >
+        <TextField
+          label="Code"
+          {...register("code")}
+          fullWidth
+          margin="normal"
+          slotProps={{ inputLabel: { shrink: true } }}
         />
-      </FormControl>
-
-      <Button type="submit" variant="contained">
-        {id ? "Cập nhật" : "Lưu"}
-      </Button>
-    </Box>
+        <TextField
+          label="Name"
+          {...register("name")}
+          fullWidth
+          margin="normal"
+          slotProps={{ inputLabel: { shrink: true } }}
+        />
+        <TextField
+          label="Description"
+          {...register("description")}
+          fullWidth
+          margin="normal"
+          multiline
+          slotProps={{ inputLabel: { shrink: true } }}
+        />
+        <FormControl fullWidth margin="normal">
+          <InputLabel id="type-label">Thể loại</InputLabel>
+          <Controller
+            name="type_id"
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <Select
+                labelId="type-label"
+                label="Thể loại"
+                {...field}
+                slotProps={{ inputLabel: { shrink: true } }}
+              >
+                {categories.map((cat) => (
+                  <MenuItem key={cat.id} value={cat.id}>
+                    {cat.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            )}
+          />
+        </FormControl>
+        <Button
+          variant="outlined"
+          onClick={() => navigate("/typeDetails")}
+          sx={{ mr: 2 }}
+        >
+          Quay lại
+        </Button>
+        <Button type="submit" variant="contained">
+          {id ? "Cập nhật" : "Lưu"}
+        </Button>
+      </Box>
+    </>
   );
 };
 

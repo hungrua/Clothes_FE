@@ -42,10 +42,7 @@ const SizeList = () => {
   };
   return (
     <>
-      <Typography variant="h4" gutterBottom>
-        Danh sách Size
-      </Typography>
-
+      <h1>Quản lý kích thước</h1>
       <Button
         component={Link}
         to="/sizes/new"
@@ -59,28 +56,8 @@ const SizeList = () => {
         <Table stickyHeader>
           <TableHead>
             <TableRow>
-              <TableCell
-                sx={{
-                  backgroundColor: "#ffffa6",
-                  fontWeight: "bold",
-                  position: "sticky",
-                  top: 0,
-                  zIndex: 1,
-                }}
-              >
-                Code
-              </TableCell>
-              <TableCell
-                sx={{
-                  backgroundColor: "#ffffa6",
-                  fontWeight: "bold",
-                  position: "sticky",
-                  top: 0,
-                  zIndex: 1,
-                }}
-              >
-                Thể loại
-              </TableCell>
+              <TableCell>Code</TableCell>
+              <TableCell>Thể loại</TableCell>
               <TableCell>Hành động</TableCell>
             </TableRow>
           </TableHead>

@@ -33,29 +33,44 @@ const SizeForm = () => {
   };
 
   return (
-    <Box
-      component="form"
-      onSubmit={handleSubmit(onSubmit)}
-      sx={{ maxWidth: 600 }}
-    >
-      <TextField label="Code" {...register("code")} fullWidth margin="normal" />
-      <FormControl fullWidth margin="normal">
-        <InputLabel>Thể loại</InputLabel>
-        <Select
-          {...register("type_id")}
-          slotProps={{ inputLabel: { shrink: true } }}
+    <>
+      <h1>Thêm Kích thước</h1>
+      <Box
+        component="form"
+        onSubmit={handleSubmit(onSubmit)}
+        sx={{ maxWidth: 600 }}
+      >
+        <TextField
+          label="Code"
+          {...register("code")}
+          fullWidth
+          margin="normal"
+        />
+        <FormControl fullWidth margin="normal">
+          <InputLabel>Thể loại</InputLabel>
+          <Select
+            {...register("type_id")}
+            slotProps={{ inputLabel: { shrink: true } }}
+          >
+            {categories.map((cat) => (
+              <MenuItem key={cat.id} value={cat.id}>
+                {cat.code}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <Button
+          variant="outlined"
+          onClick={() => navigate("/sizes")}
+          sx={{ mr: 2 }}
         >
-          {categories.map((cat) => (
-            <MenuItem key={cat.id} value={cat.id}>
-              {cat.code}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <Button type="submit" variant="contained">
-        Lưu
-      </Button>
-    </Box>
+          Quay lại
+        </Button>
+        <Button type="submit" variant="contained">
+          Lưu
+        </Button>
+      </Box>
+    </>
   );
 };
 

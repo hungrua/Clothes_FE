@@ -44,37 +44,47 @@ const ColorForm = () => {
   };
 
   return (
-    <Box
-      component="form"
-      onSubmit={handleSubmit(onSubmit)}
-      sx={{ maxWidth: 600 }}
-    >
-      <TextField
-        label="Color Code"
-        {...register("colorCode")}
-        fullWidth
-        margin="normal"
-         slotProps={{ inputLabel: { shrink: true } }} 
-      />
-      <TextField
-        label="Color Name"
-        {...register("colorName")}
-        fullWidth
-        margin="normal"
-         slotProps={{ inputLabel: { shrink: true } }} 
-      />
-      <TextField
-        label="Description"
-        {...register("description")}
-        fullWidth
-        margin="normal"
-        multiline
-        slotProps={{ inputLabel: { shrink: true } }}
-      />
-      <Button type="submit" variant="contained">
-        {id ? "Cập nhật" : "Lưu"}
-      </Button>
-    </Box>
+    <>
+      <h1>{id ? "Cập nhật Màu sắc" : "Thêm Màu sắc"}</h1>
+      <Box
+        component="form"
+        onSubmit={handleSubmit(onSubmit)}
+        sx={{ maxWidth: 600 }}
+      >
+        <TextField
+          label="Color Code"
+          {...register("colorCode")}
+          fullWidth
+          margin="normal"
+          slotProps={{ inputLabel: { shrink: true } }}
+        />
+        <TextField
+          label="Color Name"
+          {...register("colorName")}
+          fullWidth
+          margin="normal"
+          slotProps={{ inputLabel: { shrink: true } }}
+        />
+        <TextField
+          label="Description"
+          {...register("description")}
+          fullWidth
+          margin="normal"
+          multiline
+          slotProps={{ inputLabel: { shrink: true } }}
+        />
+        <Button
+          variant="outlined"
+          onClick={() => navigate("/colors")}
+          sx={{ mr: 2 }}
+        >
+          Quay lại
+        </Button>
+        <Button type="submit" variant="contained">
+          {id ? "Cập nhật" : "Lưu"}
+        </Button>
+      </Box>
+    </>
   );
 };
 

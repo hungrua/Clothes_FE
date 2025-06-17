@@ -55,120 +55,129 @@ const VariantsForm = () => {
   };
 
   return (
-    <Box
-      component="form"
-      onSubmit={handleSubmit(onSubmit)}
-      sx={{ maxWidth: 600 }}
-    >
-      {/* Quần áo */}
-      <FormControl fullWidth margin="normal">
-        <InputLabel id="clothes-label">Quần áo</InputLabel>
-        <Controller
-          name="clothes_id"
-          control={control}
-          defaultValue=""
-          render={({ field }) => (
-            <Select
-              labelId="clothes-label"
-              label="Quần áo"
-              {...field}
-              slotProps={{ inputLabel: { shrink: true } }}
-            >
-              {clothes.map((item) => (
-                <MenuItem key={item.id} value={item.id}>
-                  {item.clothesName}
-                </MenuItem>
-              ))}
-            </Select>
-          )}
+    <>
+      <h1>{id ? "Cập nhật Biến thể" : "Thêm Biến thể"}</h1>
+      <Box
+        component="form"
+        onSubmit={handleSubmit(onSubmit)}
+        sx={{ maxWidth: 600 }}
+      >
+        {/* Quần áo */}
+        <FormControl fullWidth margin="normal">
+          <InputLabel id="clothes-label">Quần áo</InputLabel>
+          <Controller
+            name="clothes_id"
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <Select
+                labelId="clothes-label"
+                label="Quần áo"
+                {...field}
+                slotProps={{ inputLabel: { shrink: true } }}
+              >
+                {clothes.map((item) => (
+                  <MenuItem key={item.id} value={item.id}>
+                    {item.clothesName}
+                  </MenuItem>
+                ))}
+              </Select>
+            )}
+          />
+        </FormControl>
+
+        {/* Size */}
+        <FormControl fullWidth margin="normal">
+          <InputLabel id="size-label">Size</InputLabel>
+          <Controller
+            name="size_id"
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <Select
+                labelId="size-label"
+                label="Size"
+                {...field}
+                slotProps={{ inputLabel: { shrink: true } }}
+              >
+                {sizes.map((size) => (
+                  <MenuItem key={size.id} value={size.id}>
+                    {size.code}
+                  </MenuItem>
+                ))}
+              </Select>
+            )}
+          />
+        </FormControl>
+
+        {/* Màu sắc */}
+        <FormControl fullWidth margin="normal">
+          <InputLabel id="color-label">Màu sắc</InputLabel>
+          <Controller
+            name="color_id"
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <Select
+                labelId="color-label"
+                label="Màu sắc"
+                {...field}
+                slotProps={{ inputLabel: { shrink: true } }}
+              >
+                {colors.map((color) => (
+                  <MenuItem key={color.id} value={color.id}>
+                    <Box
+                      component="span"
+                      sx={{
+                        display: "inline-block",
+                        width: 12,
+                        height: 12,
+                        borderRadius: "50%",
+                        backgroundColor: color.colorCode,
+                        mr: 1,
+                        border: "1px solid #000",
+                        verticalAlign: "middle",
+                      }}
+                    />
+                    {color.colorName}
+                  </MenuItem>
+                ))}
+              </Select>
+            )}
+          />
+        </FormControl>
+
+        {/* Số lượng */}
+        <TextField
+          label="Số lượng"
+          type="number"
+          {...register("quantity")}
+          fullWidth
+          margin="normal"
+          slotProps={{ inputLabel: { shrink: true } }}
         />
-      </FormControl>
 
-      {/* Size */}
-      <FormControl fullWidth margin="normal">
-        <InputLabel id="size-label">Size</InputLabel>
-        <Controller
-          name="size_id"
-          control={control}
-          defaultValue=""
-          render={({ field }) => (
-            <Select
-              labelId="size-label"
-              label="Size"
-              {...field}
-              slotProps={{ inputLabel: { shrink: true } }}
-            >
-              {sizes.map((size) => (
-                <MenuItem key={size.id} value={size.id}>
-                  {size.code}
-                </MenuItem>
-              ))}
-            </Select>
-          )}
+        {/* Giá */}
+        <TextField
+          label="Giá"
+          type="number"
+          {...register("price")}
+          fullWidth
+          margin="normal"
+          slotProps={{ inputLabel: { shrink: true } }}
         />
-      </FormControl>
-
-      {/* Màu sắc */}
-      <FormControl fullWidth margin="normal">
-        <InputLabel id="color-label">Màu sắc</InputLabel>
-        <Controller
-          name="color_id"
-          control={control}
-          defaultValue=""
-          render={({ field }) => (
-            <Select
-              labelId="color-label"
-              label="Màu sắc"
-              {...field}
-              slotProps={{ inputLabel: { shrink: true } }}
-            >
-              {colors.map((color) => (
-                <MenuItem key={color.id} value={color.id}>
-                  <Box
-                    component="span"
-                    sx={{
-                      display: "inline-block",
-                      width: 12,
-                      height: 12,
-                      borderRadius: "50%",
-                      backgroundColor: color.colorCode,
-                      mr: 1,
-                      border: "1px solid #000",
-                      verticalAlign: "middle",
-                    }}
-                  />
-                  {color.colorName}
-                </MenuItem>
-              ))}
-            </Select>
-          )}
-        />
-      </FormControl>
-
-      {/* Số lượng */}
-      <TextField
-        label="Số lượng"
-        type="number"
-        {...register("quantity")}
-        fullWidth
-        margin="normal"
-        slotProps={{ inputLabel: { shrink: true } }}
-      />
-
-      {/* Giá */}
-      <TextField
-        label="Giá"
-        type="number"
-        {...register("price")}
-        fullWidth
-        margin="normal"
-        slotProps={{ inputLabel: { shrink: true } }}
-      />
-
-      <Button type="submit" variant="contained" fullWidth sx={{ mt: 2 }}>
-        {id ? "Cập nhật" : "Lưu"}
-      </Button>
-    </Box>
+        <Button
+          variant="outlined"
+          onClick={() => navigate("/variants")}
+          sx={{ mr: 2, mt: 2 }}
+        >
+          Quay lại
+        </Button>
+        <Button type="submit" variant="contained" sx={{ mt: 2 }}>
+          {id ? "Cập nhật" : "Lưu"}
+        </Button>
+      </Box>
+    </>
   );
 };
 
