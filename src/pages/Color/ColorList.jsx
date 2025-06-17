@@ -19,7 +19,7 @@ const ColorList = () => {
   const [colors, setColors] = useState([]);
 
   useEffect(() => {
-    api.getColors().then((data) => setColors(data.result));
+    api.getColors().then((data) => setColors(data.result || []));
   }, []);
   const handleDelete = (id) => {
     Swal.fire({

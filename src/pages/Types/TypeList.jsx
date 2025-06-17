@@ -13,12 +13,11 @@ import {
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-
 const TypeList = () => {
   const [types, setTypes] = useState([]);
 
   useEffect(() => {
-    api.getTypes().then((data) => setTypes(data.result));
+    api.getTypes().then((data) => setTypes(data.result || []));
   }, []);
   const handleDelete = (id) => {
     Swal.fire({

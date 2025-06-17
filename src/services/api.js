@@ -3,7 +3,7 @@ import axios from "axios";
 import { get } from "react-hook-form";
 
 // Thay bằng base URL của API thật
-const API_BASE_URL = process.env.API_BASE_URL;
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 // Tạo instance axios với cấu hình mặc định
 const apiClient = axios.create({

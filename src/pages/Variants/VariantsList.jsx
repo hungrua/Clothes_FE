@@ -19,7 +19,7 @@ const VariantsList = () => {
 
   useEffect(() => {
     api.getVariants().then((data) => {
-      setVariants(data.result);
+      setVariants(data.result || []);
     });
     // Giả sử api.getVariants() trả về dữ liệu dạng { result: [...] }
   }, []);
