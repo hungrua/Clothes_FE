@@ -68,7 +68,12 @@ const VariantsForm = () => {
           control={control}
           defaultValue=""
           render={({ field }) => (
-            <Select labelId="clothes-label" label="Quần áo" {...field}>
+            <Select
+              labelId="clothes-label"
+              label="Quần áo"
+              {...field}
+              slotProps={{ inputLabel: { shrink: true } }}
+            >
               {clothes.map((item) => (
                 <MenuItem key={item.id} value={item.id}>
                   {item.clothesName}
@@ -87,7 +92,12 @@ const VariantsForm = () => {
           control={control}
           defaultValue=""
           render={({ field }) => (
-            <Select labelId="size-label" label="Size" {...field}>
+            <Select
+              labelId="size-label"
+              label="Size"
+              {...field}
+              slotProps={{ inputLabel: { shrink: true } }}
+            >
               {sizes.map((size) => (
                 <MenuItem key={size.id} value={size.id}>
                   {size.code}
@@ -106,7 +116,12 @@ const VariantsForm = () => {
           control={control}
           defaultValue=""
           render={({ field }) => (
-            <Select labelId="color-label" label="Màu sắc" {...field}>
+            <Select
+              labelId="color-label"
+              label="Màu sắc"
+              {...field}
+              slotProps={{ inputLabel: { shrink: true } }}
+            >
               {colors.map((color) => (
                 <MenuItem key={color.id} value={color.id}>
                   <Box
@@ -137,6 +152,7 @@ const VariantsForm = () => {
         {...register("quantity")}
         fullWidth
         margin="normal"
+        slotProps={{ inputLabel: { shrink: true } }}
       />
 
       {/* Giá */}
@@ -146,6 +162,7 @@ const VariantsForm = () => {
         {...register("price")}
         fullWidth
         margin="normal"
+        slotProps={{ inputLabel: { shrink: true } }}
       />
 
       <Button type="submit" variant="contained" fullWidth sx={{ mt: 2 }}>

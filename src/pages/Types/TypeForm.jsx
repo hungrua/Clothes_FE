@@ -49,14 +49,27 @@ const CategoryForm = () => {
       onSubmit={handleSubmit(onSubmit)}
       sx={{ maxWidth: 600 }}
     >
-      <TextField label="Code" {...register("code")} fullWidth margin="normal" />
-      <TextField label="Name" {...register("name")} fullWidth margin="normal" />
+      <TextField
+        label="Code"
+        {...register("code")}
+        fullWidth
+        margin="normal"
+        slotProps={{ inputLabel: { shrink: true } }}
+      />
+      <TextField
+        label="Name"
+        {...register("name")}
+        fullWidth
+        margin="normal"
+        slotProps={{ inputLabel: { shrink: true } }}
+      />
       <TextField
         label="Description"
         {...register("description")}
         fullWidth
         margin="normal"
         multiline
+        slotProps={{ inputLabel: { shrink: true } }}
       />
       <Button type="submit" variant="contained">
         {id ? "Cập nhật" : "Lưu"}

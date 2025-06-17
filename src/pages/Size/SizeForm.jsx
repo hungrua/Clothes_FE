@@ -41,7 +41,10 @@ const SizeForm = () => {
       <TextField label="Code" {...register("code")} fullWidth margin="normal" />
       <FormControl fullWidth margin="normal">
         <InputLabel>Thể loại</InputLabel>
-        <Select {...register("type_id")}>
+        <Select
+          {...register("type_id")}
+          slotProps={{ inputLabel: { shrink: true } }}
+        >
           {categories.map((cat) => (
             <MenuItem key={cat.id} value={cat.id}>
               {cat.code}

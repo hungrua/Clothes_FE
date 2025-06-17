@@ -71,12 +71,14 @@ const ClothesForm = () => {
         {...register("clothesCode")}
         fullWidth
         margin="normal"
+        slotProps={{ inputLabel: { shrink: true } }} // ✅ Cách mới
       />
       <TextField
         label="Clothes Name"
         {...register("clothesName")}
         fullWidth
         margin="normal"
+        slotProps={{ inputLabel: { shrink: true } }} // ✅ Cách mới
       />
       <TextField
         label="Description"
@@ -84,6 +86,7 @@ const ClothesForm = () => {
         fullWidth
         margin="normal"
         multiline
+        slotProps={{ inputLabel: { shrink: true } }} // ✅ Cách mới   
       />
 
       <FormControl fullWidth margin="normal">

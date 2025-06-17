@@ -54,12 +54,14 @@ const ColorForm = () => {
         {...register("colorCode")}
         fullWidth
         margin="normal"
+         slotProps={{ inputLabel: { shrink: true } }} 
       />
       <TextField
         label="Color Name"
         {...register("colorName")}
         fullWidth
         margin="normal"
+         slotProps={{ inputLabel: { shrink: true } }} 
       />
       <TextField
         label="Description"
@@ -67,6 +69,7 @@ const ColorForm = () => {
         fullWidth
         margin="normal"
         multiline
+        slotProps={{ inputLabel: { shrink: true } }}
       />
       <Button type="submit" variant="contained">
         {id ? "Cập nhật" : "Lưu"}
